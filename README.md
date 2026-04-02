@@ -1,8 +1,8 @@
-<h1 align="center">fevberr</h1>
+<h1 align="center">fevber</h1>
 
 <p align="center">
-  Personal account — expect random projects.<br>
-  Code is obfuscated to prevent skidding.
+  Personal account - expect random projects.<br>
+  Code is obfuscated to prevent skidding
 </p>
 
 ---
