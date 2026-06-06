@@ -9,8 +9,7 @@
 
 ## About
 - I build scripts, UIs, and experimental projects  
-- Focused on performance and clean design  
-- Working across multiple platforms and technologies  
+- Focused on performance and clean design   
 
 ---
 
@@ -59,8 +58,9 @@
 ---
 
 ## Note
-Some code is intentionally obfuscated to protect my work.  
-You can run it through a wifi payload or analyzer to verify there's nothing malicious.
+Some code is intentionally obfuscated to protect my work. 
+You can run it through a VirusTotak or analyzer to verify theres nothing maliciouss
+
 
 ---
 
