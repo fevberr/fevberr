@@ -1,4 +1,4 @@
-
+/* ========== script.js ========== */
 (function() {
   var q = [
     { t: "The only way to do great work is to <em>love</em> what you do.", a: "Steve Jobs" },
@@ -21,26 +21,27 @@
   var b2 = document.getElementById('b2');
   var t1 = document.getElementById('t1');
   var to = null;
-  var ci = 0;
 
   function g() {
     var i = Math.floor(Math.random() * q.length);
-    ci = i;
     return q[i];
   }
 
   function r() {
     var x = g();
-    d1.innerHTML = x.t;
-    d2.textContent = x.a;
+    if (d1) d1.innerHTML = x.t;
+    if (d2) d2.textContent = x.a;
   }
 
   function s(m, d) {
     d = d || 2500;
+    if (!t1) return;
     t1.textContent = m;
     t1.classList.add('show');
     clearTimeout(to);
-    to = setTimeout(function() { t1.classList.remove('show'); }, d);
+    to = setTimeout(function() { 
+      if (t1) t1.classList.remove('show'); 
+    }, d);
   }
 
   function e() {
@@ -75,21 +76,40 @@
 
   window.getQ = g;
 
-  r();
-
-  b1.addEventListener('click', function() {
-    b1.style.transform = 'scale(0.94)';
-    setTimeout(function() { b1.style.transform = ''; }, 120);
+  // Only run main widget logic if elements exist
+  if (d1 && d2) {
     r();
-  });
+    
+    if (b1) {
+      b1.addEventListener('click', function() {
+        b1.style.transform = 'scale(0.94)';
+        setTimeout(function() { b1.style.transform = ''; }, 120);
+        r();
+      });
+    }
+    
+    if (b2) {
+      b2.addEventListener('click', function() {
+        e();
+      });
+    }
+  }
 
-  b2.addEventListener('click', function() {
-    e();
-  });
+
+  var e1 = document.getElementById('e1');
+  var e2 = document.getElementById('e2');
+  if (e1 && e2) {
+    var q2 = g();
+    e1.innerHTML = q2.t;
+    e2.innerHTML = '<span>✦</span> ' + q2.a + ' <span>✦</span>';
+  }
 
   var p = new URLSearchParams(window.location.search);
   if (p.get('embed') === 'true') {
-    document.querySelector('.card').style.border = '1px solid rgba(247, 201, 72, 0.08)';
-    setTimeout(function() { s('embed mode', 1800); }, 400);
+    var card = document.querySelector('.card');
+    if (card) {
+      card.style.border = '1px solid rgba(247, 201, 72, 0.08)';
+      setTimeout(function() { s('embed mode', 1800); }, 400);
+    }
   }
 })();
