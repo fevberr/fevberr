@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>embed quote</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { padding: 0; background: transparent; }
+    .card { box-shadow: none; border-radius: 32px; max-width: 100%; }
+    .actions { display: none; }
+    .note { display: none; }
+    .card:hover { transform: none; }
+    .card::before { display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="mark">"</div>
+    <div class="quote" id="e1">Loading...</div>
+    <div class="author" id="e2">...</div>
+  </div>
+  <script>
+    (function() {
+      var s = document.createElement('script');
+      s.src = 'script.js';
+      s.onload = function() {
+        var d1 = document.getElementById('e1');
+        var d2 = document.getElementById('e2');
+        if (window.getQ) {
+          var q = window.getQ();
+          d1.innerHTML = q.t;
+          d2.textContent = q.a;
+        }
+      };
+      document.body.appendChild(s);
+    })();
+  </script>
+</body>
+</html>
