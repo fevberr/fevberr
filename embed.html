@@ -1,40 +1,143 @@
-
+<!-- ========== embed.html ========== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>embed quote</title>
+  <title>motivational quote</title>
+  
+  <!-- Open Graph / Discord / Social Embed -->
+  <meta property="og:title" content="Daily Motivation" />
+  <meta property="og:description" content="Get your daily dose of inspiration" />
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%230b1120'/%3E%3Ctext x='600' y='315' font-family='Georgia' font-size='48' fill='%23f7d98a' text-anchor='middle' dominant-baseline='middle'%3E✧%3C/text%3E%3C/svg%3E" />
+  <meta property="og:url" content="https://example.com/embed.html" />
+  <meta name="theme-color" content="#0b1120" />
+  
   <link rel="stylesheet" href="style.css" />
   <style>
-    body { padding: 0; background: transparent; }
-    .card { box-shadow: none; border-radius: 32px; max-width: 100%; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0b1120;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 2rem;
+      margin: 0;
+    }
+    .card {
+      max-width: 780px;
+      width: 100%;
+      padding: 3.5rem 3rem;
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 56px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 40px 80px -20px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05);
+      text-align: center;
+      position: relative;
+      transition: none;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 20%;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #f7c948, #f5a623, #f7c948, transparent);
+      border-radius: 100%;
+      filter: blur(1px);
+      opacity: 0.7;
+    }
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 58px;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(247,201,72,0.1), transparent, rgba(247,201,72,0.05));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .mark {
+      font-size: 4.8rem;
+      color: rgba(247, 201, 72, 0.15);
+      font-family: Georgia, serif;
+      margin-bottom: -1.2rem;
+      display: block;
+      line-height: 1;
+      text-shadow: 0 0 40px rgba(247,201,72,0.05);
+    }
+    .quote {
+      font-size: 2.2rem;
+      font-weight: 500;
+      line-height: 1.6;
+      color: #f0f3fa;
+      margin: 0.5rem 0 1.8rem 0;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .quote em {
+      font-style: italic;
+      color: #f7d98a;
+      background: rgba(247, 201, 72, 0.08);
+      padding: 0.1rem 0.4rem;
+      border-radius: 8px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .author {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 1.4rem;
+    }
+    .author span {
+      color: rgba(247, 201, 72, 0.3);
+      margin: 0 0.5rem;
+    }
     .actions { display: none; }
     .note { display: none; }
     .card:hover { transform: none; }
-    .card::before { display: none; }
+    
+    @media (max-width: 600px) {
+      .card { padding: 2.5rem 1.8rem; border-radius: 40px; }
+      .quote { font-size: 1.6rem; }
+      .mark { font-size: 3.6rem; }
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="mark">"</div>
     <div class="quote" id="e1">Loading...</div>
-    <div class="author" id="e2">...</div>
+    <div class="author" id="e2"><span>✦</span> ... <span>✦</span></div>
   </div>
+  <script src="script.js"></script>
   <script>
     (function() {
-      var s = document.createElement('script');
-      s.src = 'script.js';
-      s.onload = function() {
-        var d1 = document.getElementById('e1');
-        var d2 = document.getElementById('e2');
-        if (window.getQ) {
-          var q = window.getQ();
-          d1.innerHTML = q.t;
-          d2.textContent = q.a;
-        }
-      };
-      document.body.appendChild(s);
+      var d1 = document.getElementById('e1');
+      var d2 = document.getElementById('e2');
+      if (window.getQ) {
+        var q = window.getQ();
+        d1.innerHTML = q.t;
+        d2.innerHTML = '<span>✦</span> ' + q.a + ' <span>✦</span>';
+      } else {
+        // fallback if script.js hasn't loaded
+        var fallback = [
+          { t: "The only way to do great work is to <em>love</em> what you do.", a: "Steve Jobs" },
+          { t: "In the middle of difficulty lies <em>opportunity</em>.", a: "Albert Einstein" }
+        ];
+        var f = fallback[Math.floor(Math.random() * fallback.length)];
+        d1.innerHTML = f.t;
+        d2.innerHTML = '<span>✦</span> ' + f.a + ' <span>✦</span>';
+      }
     })();
   </script>
 </body>
