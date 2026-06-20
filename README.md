@@ -58,8 +58,8 @@
 ---
 
 ## Note
-Some code is intentionally obfuscated to protect my work. 
-You can run it through a VirusTotak or analyzer to verify theres nothing maliciouss
+Some code is intentionally obfuscated to protect my work
+You can run it through a VirusTotal or analyzer to verify theres nothing maliciouss
 
 
 ---
