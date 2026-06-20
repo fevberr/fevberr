@@ -76,7 +76,6 @@
 
   window.getQ = g;
 
-  // Only run main widget logic if elements exist
   if (d1 && d2) {
     r();
     
@@ -95,13 +94,12 @@
     }
   }
 
-
   var e1 = document.getElementById('e1');
   var e2 = document.getElementById('e2');
   if (e1 && e2) {
     var q2 = g();
     e1.innerHTML = q2.t;
-    e2.innerHTML = '<span>✦</span> ' + q2.a + ' <span>✦</span>';
+    e2.textContent = q2.a;
   }
 
   var p = new URLSearchParams(window.location.search);
