@@ -21,9 +21,10 @@ body {
   padding: 3rem 2.5rem;
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 48px;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.03);
   text-align: center;
   transition: transform 0.25s;
   position: relative;
@@ -61,6 +62,7 @@ body {
   line-height: 1.5;
   color: #f0f3fa;
   margin: 0.5rem 0 1.5rem 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .quote em {
@@ -69,6 +71,8 @@ body {
   background: rgba(247, 201, 72, 0.08);
   padding: 0.1rem 0.3rem;
   border-radius: 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .author {
