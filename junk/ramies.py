@@ -1,4 +1,3 @@
-mod made by fevber
 
 import urllib.request
 import subprocess
